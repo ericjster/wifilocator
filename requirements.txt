@@ -14,7 +14,7 @@ nlopt
 # pdfo
 
 # Facebook's collection of optimizers
-nevergrad
+# nevergrad
 
 # CMA-ES, Covariance Matrix Adaptation Evolution Strategy for non-linear numerical optimization in Python
 # Lots of code, has bbob benchmarks
@@ -42,13 +42,13 @@ cmaes
 #
 # Includes Neumaier's minq
 # 0.4.3 is required by scikit-quant
-SQSnobFit==0.4.3
+# SQSnobFit==0.4.3
 
 # ImFil is intended for optimizing on derivative-free, noisy, blackbox
 # functions. This modified version has preset defaults as intended for hybrid
 # quantum-classical algorithms run on Noisy Intermediate Scale Quantum (NISQ)
 # computers.
-SQImFil
+# SQImFil
 
 # scikit-quant, skquant
 # Exposes algorithms: imfil, snobfit, pybobyqa, bobyqa

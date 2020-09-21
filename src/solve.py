@@ -10,8 +10,8 @@ favorites = [
     'SLSQP',
     'cmaes',
     'ImFil',
-    # 'SnobFit', # Has some warning messages
-    'Bobyqa',
+    'SnobFit', # Has some warning messages and quits too early
+    # 'Bobyqa', # This version of bobyqa lacks quick termination
     nlopt.LN_PRAXIS,
     nlopt.LN_COBYLA,
     nlopt.LN_NEWUOA,
@@ -75,7 +75,7 @@ def solve():
                 rss = row[3]
                 dist_xyz = math.sqrt( (cx-rx)**2 + (cy-ry)**2 + (cz-rz)**2 )
                 dist_rss = c2 * math.exp( (rss - c3) / c1 )
-                loss += abs(dist_xyz - dist_rss)
+                loss += abs(dist_xyz - dist_rss)**2
             loss /= len(data)
         else:
             loss = 1.e10
@@ -211,7 +211,8 @@ def solve():
             opt.set_initial_step((bounds_upper-bounds_lower)/20.0)
             opt.set_maxeval(1000)
             res = opt.optimize(x0)
-            print("xbest : %s" % (x_to_str(res)))
+            fbest = loss(res)
+            print("xbest : %s" % (x_loss_to_str(res, fbest)))
             # print("last  : %s" % (x_loss_to_str(opt.last_optimize_result(), opt.last_optimum_value())))
 
     if 0:
