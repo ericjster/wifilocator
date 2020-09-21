@@ -15,15 +15,11 @@ def get_sample_data():
     xyz = None
     with open(DATAFILE) as f:
         for line in f:
-            # if "location" in line:
-            #     print(line)
             m = re.search("location.*\(([-0-9,]+)\)", line)
             if m:
-                # print("Found:", m.group(1))
                 xyz = m.group(1).split(",")
             m = re.search("MyMacAddress +([-0-9]+) ", line)
             if m:
-                # print("Found:", m.group(1))
                 rss = m.group(1)
                 row = ( float(xyz[0]), float(xyz[1]), float(xyz[2]), float(rss) )
                 rows.append(row)
