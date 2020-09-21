@@ -1,0 +1,164 @@
+# List of required pip packages.
+
+numpy
+scipy
+sklearn
+
+# Optimizers: NEWUOA, Nelder-Mead, Sbplx, SLSQP
+nlopt
+
+# PDFO (Powell's Derivative-Free Optimization solvers) is a cross-platform
+# package providing interfaces for using late Professor M. J. D. Powell's
+# derivative-free optimization solvers, including UOBYQA, NEWUOA, BOBYQA,
+# LINCOA, and COBYLA.
+# pdfo
+
+# Facebook's collection of optimizers
+nevergrad
+
+# CMA-ES, Covariance Matrix Adaptation Evolution Strategy for non-linear numerical optimization in Python
+# Lots of code, has bbob benchmarks
+# Author: Nikolaus Hansen
+cma
+
+# CMA-ES : Covariance Matrix Adaptation Evolution Strategy
+# Small
+# Author: Masashi Shibata
+cmaes
+
+# Ingber's Adaptive Simulated Annealing
+# Pretty old, and has compile errors.
+#Cython
+#pyasa
+
+# SnobFit - Stable Noisy Optimization by Branch and FIT
+# Code by Neumaier
+# https://www.mat.univie.ac.at/~neum/ms/snobfit.pdf
+#
+# SnobFit is intended for optimizing on derivative-free, noisy, blackbox
+# functions. This modified version has preset defaults as intended for hybrid
+# quantum-classical algorithms run on Noisy Intermediate Scale Quantum (NISQ)
+# computers.
+#
+# Includes Neumaier's minq
+# 0.4.3 is required by scikit-quant
+SQSnobFit==0.4.3
+
+# ImFil is intended for optimizing on derivative-free, noisy, blackbox
+# functions. This modified version has preset defaults as intended for hybrid
+# quantum-classical algorithms run on Noisy Intermediate Scale Quantum (NISQ)
+# computers.
+SQImFil
+
+# scikit-quant, skquant
+# Exposes algorithms: imfil, snobfit, pybobyqa, bobyqa
+scikit-quant
+
+# Dependency for SQSnobFit, to use orbit, which uses radial basis functions.
+# See : https://github.com/scikit-quant/scikit-quant/blob/master/skquant/opt/_norbitR.py
+# Python interface to the R language (embedded R)
+# rpy2
+
+# DFO-LS is a flexible package for solving nonlinear least-squares minimization,
+# without requiring derivatives of the objective. It is particularly useful when
+# evaluations of the objective function are expensive and/or noisy. DFO-LS is
+# more flexible version of DFO-GN.
+#
+# This is an implementation of the algorithm from our paper: C. Cartis, J.
+# Fiala, B. Marteau and L. Roberts, Improving the Flexibility and Robustness of
+# Model-Based Derivative-Free Optimization Solvers, ACM Transactions on
+# Mathematical Software, 45:3 (2019), pp. 32:1-32:41 [preprint]. For
+# reproducibility of all figures in this paper, please feel free to contact the
+# authors.
+#
+# If you are interested in solving general optimization problems (without a
+# least-squares structure), you may wish to try Py-BOBYQA, which has many of the
+# same features as DFO-LS.
+#
+# From NAG Numerical Algorithms Group
+# DFO-LS
+
+# Py-BOBYQA is a flexible package for solving bound-constrained general
+# objective minimization, without requiring derivatives of the objective. It is
+# a Python implementation of the BOBYQA algorithm by Powell. Py-BOBYQA is
+# particularly useful when evaluations of the objective function are expensive
+# and/or noisy.
+#
+# More details about Py-BOBYQA can be found in our papers:
+#
+# - Coralia Cartis, Jan Fiala, Benjamina Marteau and Lindon Roberts, Improving
+#   the Flexibility and Robustness of Model-Based Derivative-Free Optimization
+#   Solvers, ACM Transactions on Mathematical Software, 45:3 (2019), pp.
+#   32:1-32:41 [preprint]
+# - Coralia Cartis, Lindon Roberts and Oliver Sheridan-Methven, Escaping local
+#   minima with derivative-free methods: a numerical investigation, technical
+#   report, University of Oxford, (2018). Please cite [1] when using Py-BOBYQA
+#   for local optimization, and [1,2] when using Py-BOBYQA’s global optimization
+#   heuristic functionality. For reproducibility of all figures, please feel
+#   free to contact the authors.
+#
+# The original paper by Powell is: M. J. D. Powell, The BOBYQA algorithm for
+# bound constrained optimization without derivatives, technical report DAMTP
+# 2009/NA06, University of Cambridge (2009), and the original Fortran
+# implementation is available here.
+#
+# If you are interested in solving least-squares minimization problems, you may
+# wish to try DFO-LS, which has the same features as Py-BOBYQA (plus some more),
+# and exploits the least-squares problem structure, so performs better on such
+# problems.
+Py-BOBYQA
+
+# Multi objective
+# pymoo includes CMA-ES, NSGA2, 
+# pymoo requires cma==2.7
+# pymoo
+
+# A framework for creating bio-inspired computational intelligence algorithms in Python
+# inspyred
+
+# Python version of the jMetal framework
+# Algorithms: local search, genetic algorithm, evolution strategy, simulated
+# annealing, random search, NSGA-II, NSGA-III, SMPSO, OMOPSO, MOEA/D,
+# MOEA/D-DRA, MOEA/D-IEpsilon, GDE3, SPEA2, HYPE, IBEA. Preference
+# articulation-based algorithms (G-NSGA-II, G-GDE3, G-SPEA2, SMPSO/RP); Dynamic
+# versions of NSGA-II, SMPSO, and GDE3.
+# jmetalpy
+
+# Distributed Evolutionary Algorithms in Python
+# Includes: CMA-ES, 
+# Multi-objective optimisation (NSGA-II, NSGA-III, SPEA2, MO-CMA-ES),
+# Particle Swarm Optimization, Differential Evolution, Estimation of Distribution Algorithm
+# deap
+
+# An implementation of the MST2 multistart tabu search algorithm for quadratic
+# unconstrained binary optimization (QUBO) problems with a dimod Python wrapper.
+# dwave-tabu
+
+# This repository implements several swarm optimization algorithms and
+# visualizes their (intermediate) solutions. To run the algorithms one can
+# either use the CLI (recommended) or the API. Currently, the following
+# algorithms are implemented:
+# - Firefly Algorithm
+# - Cuckoo Search
+# - Particle Swarm Optimization
+# - Ant Colony Optimization
+# - Artificial Bee Colony
+# - Grey Wolf Optimization
+# swarmlib
+
+# SwarmPackagePy is the package, witch contains the following swarm optimization algorithms:
+# - Artificial Bee Algorithm
+# - Bat Algorithm
+# - Bacterial Foraging Optimization
+# - Cat Swarm Optimization
+# - Chicken Swarm Optimization
+# - Cuckoo Search Optimization
+# - Firefly algorithm
+# - Firework Algorithm
+# - Gravitational Search Algorithm
+# - Grey Wolf Optimizer
+# - Harmony Search
+# - Particle Swarm Optimization
+# - Social Spider Algorithm
+# - Whale Swarm Algorithm
+# SwarmPackagePy

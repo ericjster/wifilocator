@@ -1,0 +1,95 @@
+# Done on macbook air, using "airport" tool to measure RSS for a specific WiFi Access point.
+# RSSI values are negative, for example -27 is a strong signal and -77 is a weak signal.
+#
+# The source location is -10, 0, 6.
+# The locations are measured approximately in feet, and may be off by +- 3 feet.
+#
+# # location: office (0,0,0)
+# for i in {0..5}; do /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -s | grep MySSID && sleep 10 ; done
+                          MySSID MyMacAddress -27  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+                          MySSID MyMacAddress -33  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+                          MySSID MyMacAddress -34  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+                          MySSID MyMacAddress -34  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+                          MySSID MyMacAddress -34  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+                          MySSID MyMacAddress -33  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+# # location: shop (0,16,0)
+# for i in {0..5}; do /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -s | grep MySSID && sleep 10 ; done
+                          MySSID MyMacAddress -46  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+                          MySSID MyMacAddress -46  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+                          MySSID MyMacAddress -45  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+                          MySSID MyMacAddress -45  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+                          MySSID MyMacAddress -45  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+                          MySSID MyMacAddress -45  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+# # location: shop metal (-10,16,0)
+# for i in {0..5}; do /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -s | grep MySSID && sleep 10 ; done
+                          MySSID MyMacAddress -44  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+                          MySSID MyMacAddress -37  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+                          MySSID MyMacAddress -40  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+                          MySSID MyMacAddress -37  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+                          MySSID MyMacAddress -37  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+                          MySSID MyMacAddress -34  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+# # location: store (-20,16,0)
+# for i in {0..5}; do /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -s | grep MySSID && sleep 10 ; done
+                          MySSID MyMacAddress -54  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+                          MySSID MyMacAddress -57  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+                          MySSID MyMacAddress -61  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+                          MySSID MyMacAddress -56  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+                          MySSID MyMacAddress -57  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+                          MySSID MyMacAddress -49  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+# # location: fridge (-40,16,0)
+# for i in {0..5}; do /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -s | grep MySSID && sleep 10 ; done
+                          MySSID MyMacAddress -60  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+                          MySSID MyMacAddress -52  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+                          MySSID MyMacAddress -57  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+                          MySSID MyMacAddress -53  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+                          MySSID MyMacAddress -57  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+                          MySSID MyMacAddress -57  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+# # location: stairs (-20,-10,6)
+# for i in {0..5}; do /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -s | grep MySSID && sleep 10 ; done
+                          MySSID MyMacAddress -46  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+                          MySSID MyMacAddress -45  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+                          MySSID MyMacAddress -47  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+                          MySSID MyMacAddress -46  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+                          MySSID MyMacAddress -46  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+                          MySSID MyMacAddress -47  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+# # location: liv room chair (-40,-10,12)
+# for i in {0..5}; do /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -s | grep MySSID && sleep 10 ; done
+                          MySSID MyMacAddress -64  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+                          MySSID MyMacAddress -64  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+                          MySSID MyMacAddress -77  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+                          MySSID MyMacAddress -67  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+                          MySSID MyMacAddress -67  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+                          MySSID MyMacAddress -64  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+# # location: din room window (-20,16,12)
+# for i in {0..5}; do /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -s | grep MySSID && sleep 10 ; done
+                          MySSID MyMacAddress -63  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+                          MySSID MyMacAddress -64  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+                          MySSID MyMacAddress -62  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+                          MySSID MyMacAddress -62  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+                          MySSID MyMacAddress -59  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+                          MySSID MyMacAddress -60  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+# # location: porch (-55,0,12)
+# for i in {0..5}; do /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -s | grep MySSID && sleep 10 ; done
+                          MySSID MyMacAddress -87  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+                          MySSID MyMacAddress -75  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+                          MySSID MyMacAddress -76  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+                          MySSID MyMacAddress -74  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+                          MySSID MyMacAddress -76  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+                          MySSID MyMacAddress -73  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+# # location: kitchen table (-40,0,12)
+# for i in {0..5}; do /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -s | grep MySSID && sleep 10 ; done
+                          MySSID MyMacAddress -62  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+                          MySSID MyMacAddress -67  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+                          MySSID MyMacAddress -67  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+                          MySSID MyMacAddress -67  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+                          MySSID MyMacAddress -68  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+                          MySSID MyMacAddress -67  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+# # location: kitchen sink (-40,14,12)
+# for i in {0..5}; do /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -s | grep MySSID && sleep 10 ; done
+                          MySSID MyMacAddress -67  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+                          MySSID MyMacAddress -71  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+                          MySSID MyMacAddress -70  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+                          MySSID MyMacAddress -72  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+                          MySSID MyMacAddress -70  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+                          MySSID MyMacAddress -71  10      Y  -- WPA(PSK/AES,TKIP/TKIP) WPA2(PSK/AES,TKIP/TKIP) 
+# 
