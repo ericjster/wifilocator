@@ -25,3 +25,7 @@ Alternatively the L1 norm, or huber, or other loss function:
 
 The directory "data" contains sample measurement using a Macbook Air and TP-Link AC1750 wifi router.
 
+Here is a Desmos graph of the distance formula with parameters.
+It is useful to try with the found values of c1, c2, c3.
+(Remember that RSS is always negative, and large negative RSS correspond to large distances.)
+https://www.desmos.com/calculator/eubsa5dfvu
