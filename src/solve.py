@@ -34,6 +34,7 @@ def solve():
         We estimate the distance based on RSS as: $d = c2 * e^{(RSS-c3)/c1}$
         
         TODO: Change to use numpy.
+        TODO: Remember best solution.
         """
         cx = xcandidate[0]
         cy = xcandidate[1]
@@ -69,6 +70,8 @@ def solve():
 
     bounds = [(-100,100), (-100,100), (-100,100), (-100, -10), (0.1, 100), (-25, 25)]
     bounds = np.array(bounds, dtype=float)
+    bounds_lower = bounds[:,0]
+    bounds_upper = bounds[:,1]
     x0 = np.array([0.0, 0.0, 0.0, -21.0, 6.0, 2.5])
 
     if 0:
@@ -153,6 +156,32 @@ def solve():
                 budget=1000, # max iterations
                 method=method)
             print("xbest : %s" % (x_loss_to_str(result.optpar, result.optval)))
+
+    if 1:
+        import nlopt
+
+        def loss_nlopt(x, grad):
+            if grad.size > 0:
+                raise ValueError("grad function not supported")
+            return loss(x)
+
+        # Too poor: nlopt.LN_SBPLX, nlopt.GN_CRS2_LM
+        for algo in [nlopt.LN_PRAXIS, nlopt.LN_COBYLA, nlopt.LN_NEWUOA, nlopt.LN_NELDERMEAD, nlopt.LN_BOBYQA]:
+            iter = 0
+            opt = nlopt.opt(algo, len(x0))
+            print_algo_title(opt.get_algorithm_name())
+            opt.set_min_objective(loss_nlopt)
+            opt.set_lower_bounds(bounds_lower)
+            opt.set_upper_bounds(bounds_upper)
+            opt.set_stopval(0.1) # this will be close enough
+            opt.set_ftol_rel(0.001) # average loss
+            opt.set_ftol_abs(0.001)
+            opt.set_xtol_abs(0.001) # consider vector to treat xyz and c1c2c3 differently
+            opt.set_initial_step((bounds_upper-bounds_lower)/20.0)
+            opt.set_maxeval(1000)
+            res = opt.optimize(x0)
+            print("xbest : %s" % (x_to_str(res)))
+            # print("last  : %s" % (x_loss_to_str(opt.last_optimize_result(), opt.last_optimum_value())))
 
 
 if __name__ == "__main__":
