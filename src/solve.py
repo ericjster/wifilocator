@@ -73,16 +73,18 @@ def solve():
 
     if 0:
         from scipy.optimize import minimize
-        for optalg in ['Powell', 'Nelder-Mead', 'L-BFGS-B', 'COBYLA', 'SLSQP']:
+        # for optalg in ['Powell', 'Nelder-Mead', 'L-BFGS-B', 'COBYLA', 'SLSQP']:
+        for optalg in ['Powell', 'COBYLA', 'SLSQP']:
             print_algo_title(optalg)
+            bounds_tmp = bounds
             if optalg in ('Nelder-Mead', 'COBYLA'):
-                bounds = None
+                bounds_tmp = None
             iter = 0
             res = minimize(
                 fun=loss,
                 x0=x0,
                 method=optalg,
-                # bounds=bounds,
+                bounds=bounds_tmp,
                 tol=0.001,
                 options={"maxiter":1000})
             print_resx(res)
@@ -137,10 +139,11 @@ def solve():
         # print("fbest:", res[0])
         # print("xbest:", res[1])
 
-    if 1:
+    if 0:
         from skquant.opt import minimize
 
-        for method in ['ImFil', 'SnobFit', 'Bobyqa']:
+        # for method in ['ImFil', 'SnobFit', 'Bobyqa']:
+        for method in ['ImFil', 'SnobFit']:
             iter = 0
             print_algo_title(method)
             result, history = minimize(
