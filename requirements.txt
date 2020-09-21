@@ -19,7 +19,7 @@ nevergrad
 # CMA-ES, Covariance Matrix Adaptation Evolution Strategy for non-linear numerical optimization in Python
 # Lots of code, has bbob benchmarks
 # Author: Nikolaus Hansen
-cma
+# cma
 
 # CMA-ES : Covariance Matrix Adaptation Evolution Strategy
 # Small

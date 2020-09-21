@@ -64,11 +64,13 @@ def solve():
         print("[%4d]: %s, loss: %5.1f" % ( iter, x_to_str(xcandidate), loss))
         return loss
 
+    bounds = [(-100,100), (-100,100), (-100,100), (-100, -10), (0.1, 100), (-25, 25)]
+    bounds = np.array(bounds, dtype=float)
+    x0 = np.array([0.0, 0.0, 0.0, -21.0, 6.0, 2.5])
+
     if 0:
         for optalg in ['Powell', 'Nelder-Mead', 'L-BFGS-B', 'COBYLA', 'SLSQP']:
             print_algo_title(optalg)
-            x0 = (0.0, 0.0, 0.0, -21.0, 6.0, 2.5)
-            bounds = [(-100,100), (-100,100), (-100,100), (-100, -10), (0.1, 100), (-25, 25)]
             if optalg in ('Nelder-Mead', 'COBYLA'):
                 bounds = None
             iter = 0
@@ -84,7 +86,6 @@ def solve():
             # print("res.nit:", res.nit)
 
     if 0:
-        bounds = [(-100,100), (-100,100), (-100,100), (-100, -10), (0.1, 100), (-25, 25)]
         iter = 0
         print_algo_title("scipy.ifferential_evolution")
         res = differential_evolution(
@@ -98,8 +99,6 @@ def solve():
 
     if 0:
         from cmaes import CMA
-        bounds = [(-100,100), (-100,100), (-100,100), (-100, -10), (0.1, 100), (-25, 25)]
-        x0 = (0.0, 0.0, 0.0, -21.0, 6.0, 2.5)
         optimizer = CMA(mean=x0, sigma=5.0)
 
         print_algo_title("cmaes")
@@ -116,7 +115,35 @@ def solve():
             optimizer.tell(solutions)
         # TODO: Remember best
 
+    if 0:
+        from SQSnobFit import minimize
 
+        iter = 0
+        print_algo_title("SQSnobFit")
+        res = minimize(
+            f=loss,
+            x0=x0,
+            bounds=bounds,
+            budget=1000) # max iterations
+        print(res[0])
+        # TODO: Get fbest, xbest from res
+        # print(dir(res[0]))
+        # print("fbest:", res[0])
+        # print("xbest:", res[1])
+
+    if 1:
+        from skquant.opt import minimize
+
+        for method in ['ImFil', 'SnobFit', 'Bobyqa']:
+            iter = 0
+            print_algo_title(method)
+            result, history = minimize(
+                func=loss,
+                x0=x0,
+                bounds=bounds,
+                budget=1000, # max iterations
+                method=method)
+            print("xbest : %s, loss: %5.1f" % (x_to_str(result.optpar), result.optval))
 
 
 if __name__ == "__main__":
