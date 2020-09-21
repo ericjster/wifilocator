@@ -3,7 +3,22 @@
 import math
 import get_sample_data
 import numpy as np
+import nlopt
 
+favorites = [
+    'Powell',
+    'SLSQP',
+    'cmaes',
+    'ImFil',
+    # 'SnobFit', # Has some warning messages
+    'Bobyqa',
+    nlopt.LN_PRAXIS,
+    nlopt.LN_COBYLA,
+    nlopt.LN_NEWUOA,
+    nlopt.LN_NELDERMEAD,
+    nlopt.LN_BOBYQA,
+]
+ONLY_FAVORITES = True
 
 iter = 0
 
@@ -73,11 +88,13 @@ def solve():
     bounds_lower = bounds[:,0]
     bounds_upper = bounds[:,1]
     x0 = np.array([0.0, 0.0, 0.0, -21.0, 6.0, 2.5])
+    x0 = np.array([0.0, 0.0, 0.0, -98.0, 31.0, -0.6])
 
-    if 0:
+    if 1:
         from scipy.optimize import minimize
-        # for optalg in ['Powell', 'Nelder-Mead', 'L-BFGS-B', 'COBYLA', 'SLSQP']:
-        for optalg in ['Powell', 'COBYLA', 'SLSQP']:
+        for optalg in ['Powell', 'Nelder-Mead', 'L-BFGS-B', 'COBYLA', 'SLSQP']:
+            if ONLY_FAVORITES and optalg not in favorites:
+                continue
             print_algo_title(optalg)
             bounds_tmp = bounds
             if optalg in ('Nelder-Mead', 'COBYLA'):
@@ -96,35 +113,46 @@ def solve():
 
     if 0:
         from scipy.optimize import differential_evolution
-        iter = 0
-        print_algo_title("scipy.differential_evolution")
-        res = differential_evolution(
-            func=loss,
-            bounds=bounds,
-            maxiter=1000,
-            tol=0.01,
-            atol=0.01)
-        # print(res)
-        print_resx(res)
-        print("res.success:", res.success)
+        for algo in ['differential_evolution']:
+            if ONLY_FAVORITES and alg not in favorites:
+                continue
+            iter = 0
+            print_algo_title("scipy.differential_evolution")
+            res = differential_evolution(
+                func=loss,
+                bounds=bounds,
+                maxiter=1000,
+                tol=0.01,
+                atol=0.01)
+            # print(res)
+            print_resx(res)
+            print("res.success:", res.success)
 
-    if 0:
+    if 1:
         from cmaes import CMA
-        optimizer = CMA(mean=x0, sigma=5.0)
 
-        print_algo_title("cmaes")
-        iter = 0
-        for generation in range(50):
-            solutions = []
-            for _ in range(optimizer.population_size):
-                x = optimizer.ask()
-                value = loss(x)
-                solutions.append((x, value))
-                # print(f"#{generation} {value}")
-                # print("[sofar]: %s" % (x_to_str(x)))
+        for alg in ['cmaes']:
+            if ONLY_FAVORITES and alg not in favorites:
+                continue
 
-            optimizer.tell(solutions)
-        # TODO: Remember best
+            optimizer = CMA(mean=x0, sigma=1.3, bounds=bounds)
+            print_algo_title("cmaes")
+            iter = 0
+            bestf = 1e100
+            bestx = None
+            for generation in range(50):
+                solutions = []
+                for _ in range(optimizer.population_size):
+                    x = optimizer.ask()
+                    value = loss(x)
+                    solutions.append((x, value))
+                    if bestf > value:
+                        bestf = value
+                        bestx = x
+                    # print(f"#{generation} {value}")
+                    # print("[sofar]: %s" % (x_to_str(x)))
+                optimizer.tell(solutions)
+            print("[res ]: %s" % (x_loss_to_str(bestx, bestf)))
 
     if 0:
         from SQSnobFit import minimize
@@ -142,22 +170,23 @@ def solve():
         # print("fbest:", res[0])
         # print("xbest:", res[1])
 
-    if 0:
+    if 1:
         from skquant.opt import minimize
 
-        # for method in ['ImFil', 'SnobFit', 'Bobyqa']:
-        for method in ['ImFil', 'SnobFit']:
+        for alg in ['ImFil', 'SnobFit', 'Bobyqa']:
+            if ONLY_FAVORITES and alg not in favorites:
+                continue
             iter = 0
-            print_algo_title(method)
+            print_algo_title(alg)
             result, history = minimize(
                 func=loss,
                 x0=x0,
                 bounds=bounds,
                 budget=1000, # max iterations
-                method=method)
+                method=alg)
             print("xbest : %s" % (x_loss_to_str(result.optpar, result.optval)))
 
-    if 0:
+    if 1:
         import nlopt
 
         def loss_nlopt(x, grad):
@@ -166,9 +195,11 @@ def solve():
             return loss(x)
 
         # Too poor: nlopt.LN_SBPLX, nlopt.GN_CRS2_LM
-        for algo in [nlopt.LN_PRAXIS, nlopt.LN_COBYLA, nlopt.LN_NEWUOA, nlopt.LN_NELDERMEAD, nlopt.LN_BOBYQA]:
+        for alg in [nlopt.LN_PRAXIS, nlopt.LN_COBYLA, nlopt.LN_NEWUOA, nlopt.LN_NELDERMEAD, nlopt.LN_BOBYQA]:
+            if ONLY_FAVORITES and alg not in favorites:
+                continue
             iter = 0
-            opt = nlopt.opt(algo, len(x0))
+            opt = nlopt.opt(alg, len(x0))
             print_algo_title(opt.get_algorithm_name())
             opt.set_min_objective(loss_nlopt)
             opt.set_lower_bounds(bounds_lower)
@@ -197,6 +228,9 @@ def solve():
             ng.optimizers.ScrHammersleySearchPlusMiddlePoint(parametrization=n, budget=budget),
             ng.optimizers.TBPSA(parametrization=n, budget=budget),
         ]:
+            if ONLY_FAVORITES and type(opt).__name__ not in favorites:
+                continue
+
             iter = 0
             print_algo_title(type(opt).__name__)
             # opt = ng.optimizers.registry[algo]
