@@ -157,7 +157,7 @@ def solve():
                 method=method)
             print("xbest : %s" % (x_loss_to_str(result.optpar, result.optval)))
 
-    if 1:
+    if 0:
         import nlopt
 
         def loss_nlopt(x, grad):
@@ -182,6 +182,35 @@ def solve():
             res = opt.optimize(x0)
             print("xbest : %s" % (x_to_str(res)))
             # print("last  : %s" % (x_loss_to_str(opt.last_optimize_result(), opt.last_optimum_value())))
+
+    if 0:
+        import nevergrad as ng
+
+        n = len(x0)
+        budget = 100
+        for opt in [
+            ng.optimizers.OnePlusOne(parametrization=n, budget=budget),
+            ng.optimizers.TwoPointsDE(parametrization=n, budget=budget),
+            ng.optimizers.CMA(parametrization=n, budget=budget),
+            ng.optimizers.PSO(parametrization=n, budget=budget),
+            ng.optimizers.NGO(parametrization=n, budget=budget),
+            ng.optimizers.ScrHammersleySearchPlusMiddlePoint(parametrization=n, budget=budget),
+            ng.optimizers.TBPSA(parametrization=n, budget=budget),
+        ]:
+            iter = 0
+            print_algo_title(type(opt).__name__)
+            # opt = ng.optimizers.registry[algo]
+            opt.suggest(x0)
+
+            # This is the way to set bounds.
+            # Only used by some algos.
+            # A penalty function would work better.
+            opt.parametrization.register_cheap_constraint(lambda x: 
+                np.all((bounds_lower <= x0) & (x0 <= bounds_upper)))
+
+            res = opt.minimize(loss)
+            # print("xbest : %s" % (x_to_str(res)))
+            print("res:", res)
 
 
 if __name__ == "__main__":
