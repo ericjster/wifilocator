@@ -4,7 +4,6 @@ import math
 import get_sample_data
 import numpy as np
 
-from scipy.optimize import minimize, differential_evolution
 
 iter = 0
 
@@ -12,8 +11,12 @@ def x_to_str(x):
     return ("x: %5.1f %5.1f %5.1f c: %5.1f %5.1f %5.1f" % (
         x[0], x[1], x[2], x[3], x[4], x[5]))
 
+def x_loss_to_str(x, loss):
+    return ("x: %5.1f %5.1f %5.1f c: %5.1f %5.1f %5.1f, loss: %5.1f" % (
+        x[0], x[1], x[2], x[3], x[4], x[5], loss))
+
 def print_resx(res):
-    print("[res ]: %s" % (x_to_str(res.x)))
+    print("[res ]: %s" % (x_loss_to_str(res.x, res.fun)))
 
 def print_algo_title(algo_name):
     print("----------")
@@ -69,6 +72,7 @@ def solve():
     x0 = np.array([0.0, 0.0, 0.0, -21.0, 6.0, 2.5])
 
     if 0:
+        from scipy.optimize import minimize
         for optalg in ['Powell', 'Nelder-Mead', 'L-BFGS-B', 'COBYLA', 'SLSQP']:
             print_algo_title(optalg)
             if optalg in ('Nelder-Mead', 'COBYLA'):
@@ -86,14 +90,16 @@ def solve():
             # print("res.nit:", res.nit)
 
     if 0:
+        from scipy.optimize import differential_evolution
         iter = 0
-        print_algo_title("scipy.ifferential_evolution")
+        print_algo_title("scipy.differential_evolution")
         res = differential_evolution(
             func=loss,
             bounds=bounds,
             maxiter=1000,
-            tol=0.001,
-            atol=0.001)
+            tol=0.01,
+            atol=0.01)
+        # print(res)
         print_resx(res)
         print("res.success:", res.success)
 
@@ -143,7 +149,7 @@ def solve():
                 bounds=bounds,
                 budget=1000, # max iterations
                 method=method)
-            print("xbest : %s, loss: %5.1f" % (x_to_str(result.optpar), result.optval))
+            print("xbest : %s" % (x_loss_to_str(result.optpar, result.optval)))
 
 
 if __name__ == "__main__":
