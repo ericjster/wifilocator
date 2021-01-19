@@ -108,6 +108,14 @@ scikit-quant
 # problems.
 Py-BOBYQA
 
+# NOMAD is a C++ implementation of the Mesh Adaptive Direct Search algorithm
+# (MADS), designed for difficult blackbox optimization problems. These problems
+# occur when the functions defining the objective and constraints are the result
+# of costly computer simulations.
+#
+# https://github.com/bbopt/nomad/tree/master/interfaces/PyNomad
+SQNomad
+
 # Multi objective
 # pymoo includes CMA-ES, NSGA2, 
 # pymoo requires cma==2.7
